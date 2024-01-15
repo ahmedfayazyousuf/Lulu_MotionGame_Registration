@@ -87,7 +87,7 @@ const Player1Registration = () =>{
                 </div>
 
                 <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100vh', marginBottom:'-15px'}}>
-                    <h1 className='specialFont' style={{paddingRight: '50px', paddingLeft: '50px', fontSize: '25px', color: 'white'}}>REGISTRATION – PLAYER 1</h1>
+                    <h1 className='specialFont' style={{paddingRight: '50px', paddingLeft: '50px', fontSize: '25px', color: 'black'}}>REGISTRATION – PLAYER 1</h1>
                 </div>
 
                 <div style={{height: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginBottom: '5px'}}>
@@ -95,15 +95,15 @@ const Player1Registration = () =>{
                 </div>
                 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input className='specialFont' type="text" placeholder='NAME' id="Name" style={{opacity: '0.6', background:"white", border:"1px solid transparent", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px', fontSize: '25px'}}/> 
+                    <input className='specialFont' type="text" placeholder='NAME' id="Name" style={{opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px', fontSize: '25px'}}/> 
                 </div>
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input className='specialFont' type="email" placeholder='EMAIL' id='email' style={{opacity: '0.6', background:"white", border:"1px solid transparent", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white' , borderRadius: '120px', fontSize: '25px'}} />
+                    <input className='specialFont' type="email" placeholder='EMAIL' id='email' style={{opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white' , borderRadius: '120px', fontSize: '25px'}} />
                 </div>
 
                 <div style={{width:"101%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
                     
-                    <select id="countryCode" required style = {{ width: '30%',  opacity: '0.6', background:"white", border:"1px solid transparent", textAlign: 'center', height:'84.5px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px 0px 0px 120px', fontSize: '25px'}}>
+                    <select id="countryCode" required style = {{ width: '30%',  opacity: '0.6', background:"white", border:"1px solid grey  ", textAlign: 'center', height:'84.5px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px 0px 0px 120px', fontSize: '25px'}}>
                         <option selected value="(+971) UAE">(+971)</option>
                         <option value="+213 Algeria">+213 Algeria</option>
                         <option value="+376 Andorra">+376 Andorra</option>
@@ -322,7 +322,7 @@ const Player1Registration = () =>{
 
                     </select>
                     
-                    <input className='specialFont' type="number" placeholder='MOBILE PHONE' id='no' style={{ opacity: '0.6', background:"white", border:"1px solid transparent", textAlign: 'center', width:"70%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '0px 120px 120px 0px', fontSize: '25px' }} />
+                    <input className='specialFont' type="number" placeholder='MOBILE PHONE' id='no' style={{ opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', width:"70%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '0px 120px 120px 0px', fontSize: '25px' }} />
                 
                 </div>
 
@@ -335,7 +335,7 @@ const Player1Registration = () =>{
 
                 <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '22px'}}>
                     {/* <NavLink to="/Player2Registration" style={{textDecoration: 'none'}}> */}
-                        <button onClick={HandleSubmit} className='specialFont' id="buttontext" style={{background: 'white', height: '70px', padding: '10px', width: '250px', backgroundColor: 'white', borderRadius: '120px', fontSize: '30px', color: '#1E1450', border: '1px solid transparent'}}>REGISTER</button>
+                        <button onClick={HandleSubmit} className='specialFont' id="buttontext" style={{backgroundColor: 'red', height: '70px', padding: '10px', width: '250px', borderRadius: '120px', fontSize: '30px', color: 'white', border: '1px solid transparent'}}>REGISTER</button>
                     {/* </NavLink> */}
                 </div>
 

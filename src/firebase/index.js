@@ -10,14 +10,13 @@ import "firebase/compat/firestore"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCKm4uO7ImdxAFpLJE1LtIZURl13M_fwJQ",
-  authDomain: "dpworldmotorsportregistration.firebaseapp.com",
-  databaseURL: "https://dpworldmotorsportregistration-default-rtdb.firebaseio.com",
-  projectId: "dpworldmotorsportregistration",
-  storageBucket: "dpworldmotorsportregistration.appspot.com",
-  messagingSenderId: "1005649050420",
-  appId: "1:1005649050420:web:e51e880ac2490df7040361",
-  measurementId: "G-ZDSPQHDH6B"
+  apiKey: "AIzaSyDvkhqUpciGxba_O7z4BTsQxnU4sI2nMuw",
+  authDomain: "lulumotiongamedatabase.firebaseapp.com",
+  projectId: "lulumotiongamedatabase",
+  storageBucket: "lulumotiongamedatabase.appspot.com",
+  messagingSenderId: "563150235654",
+  appId: "1:563150235654:web:6b9674ca0a70e63f62fb87",
+  measurementId: "G-7NYPF6LZX9"
 };
 
 // Initialize Firebase
@@ -25,3 +24,7 @@ const app = firebase.initializeApp(firebaseConfig);
 
 export default firebase; 
 export const storage = getStorage(app);
+
+
+
+
