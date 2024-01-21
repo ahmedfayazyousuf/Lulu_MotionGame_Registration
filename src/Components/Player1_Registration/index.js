@@ -1,14 +1,23 @@
 // import { NavLink } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import firebase from '../../firebase';
 import '../1_Assets/main.css';
 import DPWorldLogo from '../1_Assets/LuluLogo.png';
 import NameIcon from '../1_Assets/Images/NameIcon.png';
 import EmailIcon from '../1_Assets/Images/EmailIcon.png';
 import CallIcon from '../1_Assets/Images/CallIcon.png';
+import Popup from '../1_Assets/Images/Popup.png';
 
 const Player1Registration = () =>{
-    const navigate = useNavigate();
+    const [showPopup, setShowPopup] = useState(false);
+    // const navigate = useNavigate();
+
+    function handleClosePopup() {
+        // Close the popup by setting the state to false
+        setShowPopup(false);
+    }
+
     
     function HandleSubmit() {
         const docId = "NAkbomUuiHLMXgFzshiv";
@@ -19,6 +28,9 @@ const Player1Registration = () =>{
         const Number = document.getElementById("no").value;
         const Name = document.getElementById("Name").value;
         const CountryCodeSelect = document.getElementById("countryCode");
+
+
+       
     
         if (Name === '') {
             document.getElementById('error').innerHTML = "PLEASE ENTER YOUR NAME";
@@ -68,7 +80,8 @@ const Player1Registration = () =>{
             time: firebase.firestore.FieldValue.serverTimestamp(),
             Consent: "Yes", 
         }).then(() => {
-            navigate('/SuccessPlayer1');
+            // navigate('/SuccessPlayer1');
+            setShowPopup(true);
         });
     }
     
@@ -97,10 +110,8 @@ const Player1Registration = () =>{
                     <input className='specialFont' type="email" placeholder='EMAIL' id='email' style={{border: 'none', background: 'transparent', textAlign: 'center', width:"100%", height: '100%', color:"#003561", paddingLeft: '10px', paddingRight: '10px', borderRadius: '15px', fontSize: '30px'}}/> 
                 </div>
 
-
-
                 <div style={{width:"100%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '80px', marginBottom: '0px', backgroundImage: 'linear-gradient(#2586C3, #afd6f0)', border:"1px solid #0567B5", borderRadius: '17px'}}>
-                <img style={{height: '100%'}} src={CallIcon} alt="CallIcon"/>
+                    <img style={{height: '100%'}} src={CallIcon} alt="CallIcon"/>
                     <select id="countryCode" required style = {{ width: '30%', background:"white", borderRadius: '0px 15px 15px 0px', border:"1px solid #0567B5", textAlign: 'center', height:'80px', color:"#003561", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'transparent', fontSize: '30px'}}>
                         <option selected value="(+971) UAE">(+971)</option>
                         <option value="+213 Algeria">+213 Algeria</option>
@@ -320,11 +331,8 @@ const Player1Registration = () =>{
 
                     
                     </select>
-                    
                     <input className='specialFont' type="number" placeholder='MOBILE PHONE' id='no'  style={{border: 'none', background: 'transparent', textAlign: 'center', width:"100%", height: '100%', color:"#003561", paddingLeft: '10px', paddingRight: '10px', borderRadius: '15px', fontSize: '30px'}}/> 
-                
                 </div>
-
 
                 <div style={{height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginBottom: '-20px', width: '100%'}}>
                     <p id='error' style={{color:"red", fontSize: '20px'}}></p>
@@ -335,6 +343,33 @@ const Player1Registration = () =>{
                 </div>
 
             </div>
+
+
+            {showPopup && (
+                <div style={{
+                    backgroundImage: `url(${Popup})`,
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition:'center',
+                    backgroundSize: 'auto',
+                    position: 'fixed',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: '752px',
+                    height: '432px',
+                    borderRadius: '10px',
+                    boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
+                    zIndex: '100',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <p>Registration Complete!</p>
+                    <p style={{textAlign: 'center'}}>Get ready to catch the thrill<br></br>#GameOn</p>
+                    <button onClick={handleClosePopup} style={{position: 'absolute', top: '10px', right: '10px', background: 'transparent', border: 'none', fontSize: '20px', color: 'white', cursor: 'pointer'}}>Close</button>
+                </div>
+            )}
             
         </div>
     )

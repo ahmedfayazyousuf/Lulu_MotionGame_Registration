@@ -22,6 +22,5 @@ html{
 
 ::placeholder {
     color: #003561;
-    opacity: 1; /* Firefox */
-    font-weight: 900;
+    opacity: 1; 
   }
