@@ -1,8 +1,6 @@
 body, html{
-    /* height: 100vh; */
-    /* background-color: #1E1450; */
     overflow: hidden;
-    background-image: url('./Background2.jpg');
+    background-image: url('./RegistrationBG.png');
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,35 +10,18 @@ html{
     overflow: hidden;
 }
 
-
-/* @font-face{
-    font-family: myFont;
-    src:url(PilatWide-Light.ttf);
-}
-*{
-    font-family: myFont;
-} */
-
 @font-face{
     font-family: myFontSpecial;
-    src:url(PilatWide-Bold.ttf);
+    src:url(chyprenormregular.otf);
 }
 
 *, .specialFont{
     font-family: myFontSpecial;
 }
 
-/* tr:nth-child(odd) {  
-    background-color: #1E1450;
-    color: white;  
-    border: 1px solid white;
-} 
 
-
-tr:nth-child(even) {  
-    background-color: #000000;  
-    color: white;
-    border: 1px solid white;
-}  */
-
-
+::placeholder {
+    color: #003561;
+    opacity: 1; /* Firefox */
+    font-weight: 900;
+  }

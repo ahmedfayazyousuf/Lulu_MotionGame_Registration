@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import DPWorldLogo from '../1_Assets/DPWorldLogo.png';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
 import firebase from '../../firebase';
 
 const Success = () => {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from '../../firebase';
-import BackgroundLeaderboard from '../1_Assets/BackgroundLeaderboard.png';
-import DPWorldLogo from '../1_Assets/DPWorldLogo.png';
+import BackgroundLeaderboard from '../1_Assets/RegistrationBG.png';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
 
 const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);

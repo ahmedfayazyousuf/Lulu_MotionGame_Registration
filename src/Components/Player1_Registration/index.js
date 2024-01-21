@@ -2,7 +2,10 @@
 import { useNavigate } from 'react-router-dom';
 import firebase from '../../firebase';
 import '../1_Assets/main.css';
-import DPWorldLogo from '../1_Assets/DPWorldLogo.png';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
+import NameIcon from '../1_Assets/Images/NameIcon.png';
+import EmailIcon from '../1_Assets/Images/EmailIcon.png';
+import CallIcon from '../1_Assets/Images/CallIcon.png';
 
 const Player1Registration = () =>{
     const navigate = useNavigate();
@@ -37,12 +40,6 @@ const Player1Registration = () =>{
             document.getElementById('error').innerHTML = "PLEASE ENTER A VALID PHONE NUMBER";
             return;
         }
-    
-        // const consentCheckbox = document.getElementById("consent");
-        // if (!consentCheckbox.checked) {
-        //     document.getElementById('error').innerHTML = "PLEASE CHECK THE CONSENT STATEMENT";
-        //     return;
-        // }
     
         const dataToUpdate = {
             Name: Name,
@@ -86,24 +83,25 @@ const Player1Registration = () =>{
                     <img style={{width: '100%'}} src={DPWorldLogo} alt="NBALogo"/>
                 </div>
 
-                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100vh', marginBottom:'-15px'}}>
-                    <h1 className='specialFont' style={{paddingRight: '50px', paddingLeft: '50px', fontSize: '25px', color: 'black'}}>REGISTRATION – PLAYER 1</h1>
-                </div>
-
-                <div style={{height: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginBottom: '5px'}}>
-                    <p id='error' style={{color:"red", fontSize: '10px'}}></p>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100vh', marginBottom:'0px'}}>
+                    <h1 className='specialFont' style={{paddingRight: '50px', paddingLeft: '50px', fontSize: '30px', color: '#003561'}}>REGISTRATION</h1>
                 </div>
                 
-                <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input className='specialFont' type="text" placeholder='NAME' id="Name" style={{opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px', fontSize: '25px'}}/> 
-                </div>
-                <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
-                    <input className='specialFont' type="email" placeholder='EMAIL' id='email' style={{opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', marginBottom:'15px', width:"100%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white' , borderRadius: '120px', fontSize: '25px'}} />
+                <div style={{width:"100%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '80px', marginBottom: '15px', backgroundImage: 'linear-gradient(#2586C3, #afd6f0)', border:"1px solid #0567B5", borderRadius: '17px'}}>
+                    <img style={{height: '100%'}} src={NameIcon} alt="NameIcon"/>
+                    <input className='specialFont' type="text" placeholder='NAME' id="Name" style={{border: 'none', background: 'transparent', textAlign: 'center', width:"100%", height: '100%', color:"#003561", paddingLeft: '10px', paddingRight: '10px', borderRadius: '15px', fontSize: '30px'}}/> 
+                </div>      
+
+                <div style={{width:"100%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '80px', marginBottom: '15px', backgroundImage: 'linear-gradient(#2586C3, #afd6f0)', border:"1px solid #0567B5", borderRadius: '17px'}}>
+                    <img style={{height: '100%'}} src={EmailIcon} alt="EmailIcon"/>
+                    <input className='specialFont' type="email" placeholder='EMAIL' id='email' style={{border: 'none', background: 'transparent', textAlign: 'center', width:"100%", height: '100%', color:"#003561", paddingLeft: '10px', paddingRight: '10px', borderRadius: '15px', fontSize: '30px'}}/> 
                 </div>
 
-                <div style={{width:"101%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                    
-                    <select id="countryCode" required style = {{ width: '30%',  opacity: '0.6', background:"white", border:"1px solid grey  ", textAlign: 'center', height:'84.5px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '120px 0px 0px 120px', fontSize: '25px'}}>
+
+
+                <div style={{width:"100%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: '80px', marginBottom: '0px', backgroundImage: 'linear-gradient(#2586C3, #afd6f0)', border:"1px solid #0567B5", borderRadius: '17px'}}>
+                <img style={{height: '100%'}} src={CallIcon} alt="CallIcon"/>
+                    <select id="countryCode" required style = {{ width: '30%', background:"white", borderRadius: '0px 15px 15px 0px', border:"1px solid #0567B5", textAlign: 'center', height:'80px', color:"#003561", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'transparent', fontSize: '30px'}}>
                         <option selected value="(+971) UAE">(+971)</option>
                         <option value="+213 Algeria">+213 Algeria</option>
                         <option value="+376 Andorra">+376 Andorra</option>
@@ -320,23 +318,20 @@ const Player1Registration = () =>{
                         <option value="+260 Zambia">+260 Zambia</option>
                         <option value="+263 Zimbabwe">+263 Zimbabwe</option>
 
+                    
                     </select>
                     
-                    <input className='specialFont' type="number" placeholder='MOBILE PHONE' id='no' style={{ opacity: '0.6', background:"white", border:"1px solid grey", textAlign: 'center', width:"70%", height:'70px', color:"black", paddingLeft: '10px', paddingRight: '10px', backgroundColor: 'white', borderRadius: '0px 120px 120px 0px', fontSize: '25px' }} />
+                    <input className='specialFont' type="number" placeholder='MOBILE PHONE' id='no'  style={{border: 'none', background: 'transparent', textAlign: 'center', width:"100%", height: '100%', color:"#003561", paddingLeft: '10px', paddingRight: '10px', borderRadius: '15px', fontSize: '30px'}}/> 
                 
                 </div>
 
-                {/* <div style={{ width: "100%", display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: '10px', marginBottom: '10px', paddingLeft: '10px'}}>
-                    <input type="checkbox" id="consent" required style={{height: '15px', border: '1px solid transparent', borderRadius: '10px'}} />
-                    <label for="consent" style={{ color: 'white', fontSize: '15px', marginLeft: '7px', marginBottom: '2px' }}>
-                        I consent to the terms and conditions*
-                    </label>
-                </div> */}
+
+                <div style={{height: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', marginBottom: '-20px', width: '100%'}}>
+                    <p id='error' style={{color:"red", fontSize: '20px'}}></p>
+                </div>
 
                 <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '22px'}}>
-                    {/* <NavLink to="/Player2Registration" style={{textDecoration: 'none'}}> */}
-                        <button onClick={HandleSubmit} className='specialFont' id="buttontext" style={{backgroundColor: 'red', height: '70px', padding: '10px', width: '250px', borderRadius: '120px', fontSize: '30px', color: 'white', border: '1px solid transparent'}}>REGISTER</button>
-                    {/* </NavLink> */}
+                    <button onClick={HandleSubmit} className='specialFont' id="buttontext" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>REGISTER</button>
                 </div>
 
             </div>

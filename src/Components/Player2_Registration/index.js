@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import firebase from '../../firebase';
 import '../1_Assets/main.css';
-import DPWorldLogo from '../1_Assets/DPWorldLogo.png';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
 
 const Player2Registration = () =>{
     const navigate = useNavigate();

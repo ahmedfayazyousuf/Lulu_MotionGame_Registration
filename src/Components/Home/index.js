@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
-import DPWorldLogo from '../1_Assets/DPWorldLogo.png';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
 
 const Success = () => {
 
