@@ -1,82 +1,82 @@
-    // import { NavLink } from 'react-router-dom';
-    // import { useNavigate } from 'react-router-dom';
-    import { useState } from 'react';
-    import firebase from '../../firebase';
-    import '../1_Assets/main.css';
-    import DPWorldLogo from '../1_Assets/LuluLogo.png';
-    import NameIcon from '../1_Assets/Images/NameIcon.png';
-    import EmailIcon from '../1_Assets/Images/EmailIcon.png';
-    import CallIcon from '../1_Assets/Images/CallIcon.png';
-    import Popup from '../1_Assets/Images/Popup.png';
-    import ClosePopup from '../1_Assets/Images/CrossPopup.png';
+import { useState } from 'react';
+import firebase from '../../firebase';
+import '../1_Assets/main.css';
+import DPWorldLogo from '../1_Assets/LuluLogo.png';
+import NameIcon from '../1_Assets/Images/NameIcon.png';
+import EmailIcon from '../1_Assets/Images/EmailIcon.png';
+import CallIcon from '../1_Assets/Images/CallIcon.png';
+import Popup from '../1_Assets/Images/Popup.png';
+import ClosePopup from '../1_Assets/Images/CrossPopup.png';
 
-    const Player1Registration = () =>{
-        const [showPopup, setShowPopup] = useState(false);
+const Player1Registration = () =>{
+    const [showPopup, setShowPopup] = useState(false);
 
-        function handleClosePopup() {
-            setShowPopup(false);
+    function handleClosePopup() {
+        setShowPopup(false);
+    }
+
+    function HandleSubmit() {
+        const docId = "kxRFF0co7QdYrHyjFFJg";
+        const Users = firebase.firestore().collection("Users");
+        const CurrentUsers = firebase.firestore().collection("CurrentUsers");
+        const Email = document.getElementById("email").value;
+        const Number = document.getElementById("no").value;
+        const Name = document.getElementById("Name").value;
+        const CountryCodeSelect = document.getElementById("countryCode");
+    
+        if (Name === '') {
+            document.getElementById('error').innerHTML = "PLEASE ENTER YOUR NAME";
+            return;
         }
-        
-        function HandleSubmit() {
-            const docId = "kxRFF0co7QdYrHyjFFJg";
-            const Users = firebase.firestore().collection("Users");
-            const CurrentUsers = firebase.firestore().collection("CurrentUsers");
-        
-            const Email = document.getElementById("email").value;
-            const Number = document.getElementById("no").value;
-            const Name = document.getElementById("Name").value;
-            const CountryCodeSelect = document.getElementById("countryCode");
-        
-            if (Name === '') {
-                document.getElementById('error').innerHTML = "PLEASE ENTER YOUR NAME";
-                return;
-            }
-        
-            var validRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
-        
-            if (Email === "" || !Email.match(validRegex)) {
-                document.getElementById('error').innerHTML = "PLEASE ENTER A VALID EMAIL";
-                return;
-            }
-        
-            const CountryCode = CountryCodeSelect.options[CountryCodeSelect.selectedIndex].value;
-        
-            if (Number === "") {
-                console.log('Hello');
-                document.getElementById('error').innerHTML = "PLEASE ENTER A VALID PHONE NUMBER";
-                return;
-            }
-        
-            const dataToUpdate = {
-                Name: Name,
-                Email: Email,
-                CountryCode: CountryCode,
-                Number: Number,
-                Player: "P1",
-                time: firebase.firestore.FieldValue.serverTimestamp(),
-            };
-        
-            CurrentUsers.doc(docId)
-                .set(dataToUpdate, { merge: true })
-                .then(() => {
-                    console.log("Document successfully updated!");
-                })
-                .catch((error) => {
-                    console.error("Error updating document: ", error);
-                });
-        
-            Users.add({
-                Name: Name,
-                Email: Email,
-                CountryCode: CountryCode,
-                Number: Number,
-                Player: "P2",
-                time: firebase.firestore.FieldValue.serverTimestamp(),
-                Consent: "Yes", 
-            }).then(() => {
-                setShowPopup(true);
+    
+        var validRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+    
+        if (Email === "" || !Email.match(validRegex)) {
+            document.getElementById('error').innerHTML = "PLEASE ENTER A VALID EMAIL";
+            return;
+        }
+    
+        const CountryCode = CountryCodeSelect.options[CountryCodeSelect.selectedIndex].value;
+    
+        if (Number === "" || Number.length < 6) {
+            console.log('Hello');
+            document.getElementById('error').innerHTML = "PLEASE ENTER A VALID PHONE NUMBER";
+            return;
+        }
+
+        document.getElementById("registerButton").innerHTML = "Loading...";
+    
+        const dataToUpdate = {
+            Name: Name,
+            Email: Email,
+            CountryCode: CountryCode,
+            Number: Number,
+            Player: "P2",
+            time: firebase.firestore.FieldValue.serverTimestamp(),
+        };
+    
+        CurrentUsers.doc(docId)
+            .set(dataToUpdate, { merge: true })
+            .then(() => {
+                console.log("Document successfully updated!");
+            })
+            .catch((error) => {
+                console.error("Error updating document: ", error);
             });
-        }
+    
+        Users.add({
+            Name: Name,
+            Email: Email,
+            CountryCode: CountryCode,
+            Number: Number,
+            Player: "P2",
+            time: firebase.firestore.FieldValue.serverTimestamp(),
+            Consent: "Yes", 
+        }).then(() => {
+            setShowPopup(true);
+            document.getElementById("registerButton").innerHTML = "REGISTER";
+        });
+    }
         
     return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw'}}>
@@ -331,35 +331,23 @@
                         </div>
 
                         <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '22px'}}>
-                            <button onClick={HandleSubmit} className='specialFont' id="buttontext" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>REGISTER</button>
+                            <button onClick={HandleSubmit} className='specialFont' id="registerButton" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>REGISTER</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             {showPopup && (
-                <div style={{
-                backgroundImage: `url(${Popup})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'auto',
-                position: 'fixed',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '750px',
-                height: '430px',
-                borderRadius: '15px',
-                boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)',
-                zIndex: '100',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                }}>
-                <p style={{ color: '#0667B5', fontSize: '30px', marginBottom: '0px', fontWeight: '900' }}>Registration Complete!</p>
-                <p style={{ textAlign: 'center', color: '#0667B5', fontSize: '30px', fontWeight: '900' }}>Get ready to catch the thrill<br></br>#GameOn</p>
-                <img src={ClosePopup} alt="Close" onClick={handleClosePopup} style={{ position: 'absolute', top: '-10px', right: '-10px', width: '30px', height: '35px', cursor: 'pointer' }}/>
+                <div style={{ backgroundImage: `url(${Popup})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', backgroundSize: 'auto', position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '750px', height: '430px', borderRadius: '15px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.5)', zIndex: '100', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', }}>
+
+                    <p style={{ color: '#0667B5', fontSize: '30px', marginBottom: '0px', fontWeight: '900' }}>Registration Complete!</p>
+                    <p style={{ textAlign: 'center', color: '#0667B5', fontSize: '30px', fontWeight: '900' }}>Get ready to catch the thrill<br></br>#GameOn</p>
+                    <img src={ClosePopup} alt="Close" onClick={handleClosePopup} style={{ position: 'absolute', top: '-10px', right: '-10px', width: '30px', height: '35px', cursor: 'pointer' }}/>
+
+                    <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '10px'}}>
+                        <button onClick={() => window.location.reload()} className='specialFont' id="buttontext" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>RETURN</button>
+                    </div>
+
                 </div>
             )}
 
