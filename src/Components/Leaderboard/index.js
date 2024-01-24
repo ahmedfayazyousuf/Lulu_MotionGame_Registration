@@ -33,7 +33,7 @@ const Leaderboard = () => {
     <>
       <div style={{ display: "flex", flexDirection: "column", width: "100%", height: "100vh", justifyContent: "center", alignItems: "center", textAlign: 'center', backgroundColor: '#1E1450', backgroundImage: `url(${BackgroundLeaderboard})`, backgroundPosition: 'top', backgroundSize: ' 1080px 1920px', backgroundRepeat: 'repeat', }} >
         
-        <img style={{ width: '300px', position: 'absolute', top: '30px', right: '30px'}} src={LuluLogo} alt="LuluLogo" />
+        <img style={{ width: '250px', position: 'absolute', top: '60px', right: '60px'}} src={LuluLogo} alt="LuluLogo" />
 
         <div style={{ width: '100%', display: "flex", justifyContent: "center", alignItems: "center", }} >
           <div style={{  backgroundImage: 'linear-gradient(#76C0F7, #0567B5)', margin: '50px', height: '120px', width: '700px', borderRadius: '15px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
