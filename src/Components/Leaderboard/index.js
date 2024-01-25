@@ -19,6 +19,7 @@ const Leaderboard = () => {
         const data = { id: doc.id, ...doc.data() };
         const email = data.Email;
 
+
         if (!acc[email] || data.Score > acc[email].Score) {
           acc[email] = data;
         }

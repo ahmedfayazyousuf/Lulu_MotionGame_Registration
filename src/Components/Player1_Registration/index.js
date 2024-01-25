@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
 import firebase from '../../firebase';
 import '../1_Assets/main.css';
@@ -342,11 +343,13 @@ const Player1Registration = () =>{
 
                     <p style={{ color: '#0667B5', fontSize: '30px', marginBottom: '0px', fontWeight: '900' }}>Registration Complete!</p>
                     <p style={{ textAlign: 'center', color: '#0667B5', fontSize: '30px', fontWeight: '900' }}>Get ready to catch the thrill<br></br>#GameOn</p>
-                    <img src={ClosePopup} alt="Close" onClick={handleClosePopup} style={{ position: 'absolute', top: '-10px', right: '-10px', width: '30px', height: '35px', cursor: 'pointer' }}/>
+                    {/* <img src={ClosePopup} alt="Close" onClick={handleClosePopup} style={{ position: 'absolute', top: '-10px', right: '-10px', width: '30px', height: '35px', cursor: 'pointer' }}/> */}
 
-                    <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '10px'}}>
-                        <button onClick={() => window.location.reload()} className='specialFont' id="buttontext" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>RETURN</button>
-                    </div>
+                    <NavLink to="/" style={{textDecoration: 'none'}}>
+                        <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginTop: '10px'}}>
+                            <button className='specialFont' id="buttontext" style={{ backgroundImage: 'linear-gradient(#0567B5, #1E91D5)', height: '80px', padding: '10px', width: '250px', borderRadius: '15px', fontSize: '30px', color: 'white', border: '5px solid #0567B5'}}>RETURN</button>
+                        </div>
+                    </NavLink>
 
                 </div>
             )}
