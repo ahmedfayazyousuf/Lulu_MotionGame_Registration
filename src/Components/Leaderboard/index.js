@@ -7,27 +7,41 @@ const Leaderboard = () => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   const formatScore = (score) => {
-    const formattedScore = Math.floor(score); // Use Math.floor to remove decimal places
+    const formattedScore = Math.floor(score);
     return formattedScore < 10 ? `0${formattedScore}` : formattedScore.toString();
   };
 
   useEffect(() => {
+    const leaderboardRef = firebase.firestore().collection('Leaderboard');
+    
+    const unsubscribe = leaderboardRef.onSnapshot((querySnapshot) => {
+      const groupedData = querySnapshot.docs.reduce((acc, doc) => {
+        const data = { id: doc.id, ...doc.data() };
+        const email = data.Email;
 
-    const Leaderboard = firebase.firestore().collection("Leaderboard");
-    const query = Leaderboard.orderBy("Score", "desc").limit(10);
+        if (!acc[email] || data.Score > acc[email].Score) {
+          acc[email] = data;
+        }
 
-    const unsubscribe = query.onSnapshot((querySnapshot) => {
-      const data = [];
-      querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, ...doc.data() });
-      });
-      setLeaderboardData(data);
+        return acc;
+      }, {});
+
+      const data = Object.values(groupedData);
+
+      // Sort the array by score in descending order
+      data.sort((a, b) => b.Score - a.Score);
+
+      // Take the top 10 entries
+      const limitedData = data.slice(0, 10);
+
+      setLeaderboardData(limitedData);
     });
 
     return () => {
       unsubscribe();
     };
   }, []);
+
 
   return (
     <>
